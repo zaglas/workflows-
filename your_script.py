@@ -152,6 +152,22 @@ print(pharmacy_data)
 
 with open('pharmacy_data.json', 'w') as file:
     json.dump(pharmacy_data, file)
+    
+service_account_json_string = """
+{
+  "type": "service_account",
+  "project_id": "efhmeries",
+  "private_key_id": "e4266a87aa9c338864768886c26c4c22a1ba52b9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCixeH/LAcVIqTU\nQJZ5ZbqpbYn1WsNmhdM2JFUao+9qrnFWxrgQP3fSJY9W0okPofvUUeUHQtEiNK3n\n03IIl/4JDxgTRUsP+07m1onnhPcrMRfk1y3N/D+7sUdJYIvvuG5W+7HfqbaAyX6j\nkZQeXi4V2x8tbIWhwTq18PtsWXca/JWpDS86XiVQv4rMyEqgt6Un2zJOvqQURtAt\nqIe1YhyJQnWsvHPkswBzf/us0D9TZCg91JeS3uRTU2uDhsdrIU/8Vs7Au9MTfvfC\naZVC1erf/1gI32/tCTegNs3TuH5q/ikc1XNup17GDmF9bMxwhwkYzHY6/02sMTLH\nln9yGkxfAgMBAAECggEATsFJqGnH/3zknWGmrJQA7Yr3TgQdONSVLcQEfUBGTaqb\nYe4CDrJ2qfHMWajB8hNgwgjhtFKq107/uYP/z5KisgVgk6paOCBSu7Ofw6n84SP+\nuJU4L0rWF10d7a3N5y2oDWP4WwxFJijXohKExPCygZakjhjMy0evvWoca/8Zdq9r\nGZx14tFXbbQo3/wmw4O4vs1Pa4bnR4jvLHV4Z9aVfuvXolD0LYyqDSDM+jlKmraL\nxqpuYjdgTzN9LbjljNu+Z/EiXnS2nFOSnGX6jIMU18z6nuq9U5tXO1Y7Lgw3wrrL\nXdI9yZR4UKu7z+Qhjk8cPzH33n9//jCuNcCVVEgcYQKBgQDdN/w0mHLKhiOTEVNh\nMaxxKEQGsQTmu1brgpji4WIA3SXNWuhI8lPWGW9Kc0p2ejuTOieLbapFtROWOSYV\n/SCEGkSeJCm8oH0W4QAZuxLroUENdy9wKnqFzqoJf7KFeJEQbYSpPD3/ew+UrPDv\noVUyZy41g5hfB/YNcy9F+2Ek7wKBgQC8XXe1kfsH/4io1F78icVbnlZxqZMgRHgg\nXjJs3Fcg9uKc+7iVwQc9tqsiyxN5dEm8VIeR+zGD4eXsrXIti1j9ARnVOUybeYFE\n94dILe6IvIEfqOM5EgTHGDiIY4+7EI06VHHBuraJ74PYmLaPjR/g/jeO8792GY58\nBtHAp3uvkQKBgQDF/fWcnVUgLi5o0njt5KeSH5fC5Wydlc6Vuq1bYp10aHoM8fA0\nWa7vUJRq7gUXRQ9NFh+Oivh6qzZ8nWmZBJS1p00CvRsd2AYdFAQjA2xLuGegxauP\nmHVQjUdieQgurVooedziGyjiICIxzxdVYe/+zJpvCvi1FUsDfrQwzmyDwQKBgQCf\nlIfwWYZU1lYOwizewlFjNxeBH+q3MYqb0XHi7CEcmkyONmvA41GhJPqDdYxAHxbA\n6NQaBreCRYUnKCJNF3sCjUY3cF3Icf3kUdhYfCFT0m+KROiL1woZKhnq4n5IOtOL\nETN2rxoqbbJDc81mfGb/lB+5iiMwiKI/zP8yujF9IQKBgQC7O9ohDKOSabj3j7Ki\nk1d1n8/DQ8VpcfMQjsY9giZxX0BCudPwnYmhSrjQDE56yu1Odb5tqbQHlYz3vR90\nPt5OuwEb9+s1j5GDoZOrGuOtSO0Wczo8UTPCWAdXcFrtXDf+9LSYCbEwmYxEMKwE\nd8S3RZdn7DosuOT4GgZCzB67aw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-account@efhmeries.iam.gserviceaccount.com",
+  "client_id": "105609221530946964186",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-account%40efhmeries.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
+"""
 
 # Authenticate using the service account
 service_account_info = json.loads(your_service_account_json_string)
@@ -166,3 +182,4 @@ file_metadata = {'name': 'pharmacy_data.json', 'mimeType': 'application/json'}
 # Upload the file
 media = MediaFileUpload('pharmacy_data.json', mimetype='application/json')
 file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+
