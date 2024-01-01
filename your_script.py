@@ -1,4 +1,7 @@
 ## DOKIMI ME PYTHONANYWHERE 1/1/24 
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+import json
 import requests
 from bs4 import BeautifulSoup
 import PyPDF2
@@ -146,3 +149,20 @@ def fetch_pharmacy_data():
 # Example usage of the function
 pharmacy_data = fetch_pharmacy_data()
 print(pharmacy_data)
+
+with open('pharmacy_data.json', 'w') as file:
+    json.dump(pharmacy_data, file)
+
+# Authenticate using the service account
+service_account_info = json.loads(your_service_account_json_string)
+credentials = service_account.Credentials.from_service_account_info(service_account_info)
+
+# Build the Google Drive service
+service = build('drive', 'v3', credentials=credentials)
+
+# File metadata
+file_metadata = {'name': 'pharmacy_data.json', 'mimeType': 'application/json'}
+
+# Upload the file
+media = MediaFileUpload('pharmacy_data.json', mimetype='application/json')
+file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
