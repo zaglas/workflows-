@@ -170,7 +170,7 @@ service_account_json_string = """
 """
 
 # Authenticate using the service account
-service_account_info = json.loads(your_service_account_json_string)
+service_account_info = json.loads(service_account_json_string)
 credentials = service_account.Credentials.from_service_account_info(service_account_info)
 
 # Build the Google Drive service
