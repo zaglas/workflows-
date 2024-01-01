@@ -1,8 +1,6 @@
 name: Daily Web Scraping
 
-on:
-  schedule:
-    - cron: '0 0 * * *'  # Runs every day at midnight
+on: [push]
 
 jobs:
   scrape:
@@ -16,6 +14,6 @@ jobs:
           python-version: '3.8'  # Specify your Python version
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4  # Replace with your dependencies
+          pip install requests beautifulsoup4 PyPDF2
       - name: Run scraping script
         run: python your_script.py  # Replace with your script name
