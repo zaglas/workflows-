@@ -16,4 +16,4 @@ jobs:
         run: |
           pip install requests beautifulsoup4 PyPDF2
       - name: Run scraping script
-        run: python workflows/your_script.py  # Replace with your script name
+        run: python your_script.py  # Replace with your script name
