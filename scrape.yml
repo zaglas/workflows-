@@ -1,0 +1,21 @@
+name: Daily Web Scraping
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Specify your Python version
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4  # Replace with your dependencies
+      - name: Run scraping script
+        run: python your_script.py  # Replace with your script name
