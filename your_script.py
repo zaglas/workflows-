@@ -8,6 +8,7 @@ import PyPDF2
 import io
 import re
 from datetime import datetime
+from googleapiclient.http import MediaFileUpload
 
 def extract_date_from_text(text):
     date_pattern = r'\d{2}/\d{2}/\d{4}'
