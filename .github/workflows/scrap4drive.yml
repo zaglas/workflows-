@@ -1,6 +1,10 @@
 name: Pharmacy Data Scraping
 
-on: [push]
+on:
+  schedule:
+    - cron: '0 10 * * *'  # Runs every day at 10 in the morning.
+  workflow_dispatch:  # Allows manual triggering of the workflow.
+
 
 jobs:
   scrape-and-upload:
