@@ -7,7 +7,7 @@ def main():
     client_id = os.environ['CLIENT_ID']
     client_secret = os.environ['CLIENT_SECRET']
     refresh_token = os.environ['REFRESH_TOKEN']
-    file_path = os.environ['FILE_PATH']
+    file_path = 'test.txt' 
 
     credentials = Credentials(None, refresh_token=refresh_token, token_uri='https://oauth2.googleapis.com/token', client_id=client_id, client_secret=client_secret)
     service = build('drive', 'v3', credentials=credentials)
