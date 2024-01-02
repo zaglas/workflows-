@@ -1,0 +1,35 @@
+name: Upload to Google Drive
+
+on:
+  push:
+    branches: 
+      - main
+  # You can also trigger on a schedule
+  # schedule:
+  # - cron:  '0 * * * *'  # Runs every hour
+
+jobs:
+  upload-drive:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+    - name: Run Script
+      env:
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+        FILE_PATH: 'path/to/your/file'
+      run: python script-to-upload.py
