@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import PyPDF2
 import io
 import re
+import os
 from datetime import datetime
 from googleapiclient.http import MediaFileUpload
 from google.oauth2.credentials import Credentials
