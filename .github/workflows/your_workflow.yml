@@ -1,0 +1,32 @@
+name: Daily Web Scraping
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Specify your Python version
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 PyPDF2 google-auth google-api-python-client
+
+      - name: Run scraping script
+        run: python your_script2.py  # Replace with your script name
+
+      - name: Upload to Google Drive
+        uses: willo32/google-drive-upload-action@v1
+        with:
+          target: 'pharmacy_data.json'  # Change to your file name
+          credentials: ${{ secrets.GOOGLE_DRIVE_CREDS }}
+          parent_folder_id: '<1NTyoZ7m72E-7Pw3DWmXbDyj9qnjdXiS5>'  # Change to your Google Drive folder ID
