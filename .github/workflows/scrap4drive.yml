@@ -1,0 +1,27 @@
+name: Pharmacy Data Scraping
+
+on: [push]
+
+jobs:
+  scrape-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # Specify your Python version.
+
+    - name: Install Dependencies
+      run: |
+        pip install requests beautifulsoup4 PyPDF2 google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+    - name: Run Scraping Script
+      run: python scrap_script.py
+      env:
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+
