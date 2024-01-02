@@ -28,5 +28,15 @@ jobs:
         uses: willo32/google-drive-upload-action@v1
         with:
           target: 'pharmacy_data.json'  # Change to your file name
-          credentials: ${{ secrets.GOOGLE_DRIVE_CREDS }}
+          credentials: ${{  "type": "service_account",
+  "project_id": "efhmeries",
+  "private_key_id": "67618972745a9a092f8e32587f6fabb5d29cf2c4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCkC005cIPCKR48\ntYwX4CZbP5l+FSdrt0FKlD1HYez6OwnKHWO3OdxHKTRjmLNt/XtOvaKTdFmxfX9L\nVheh3eG7bt4GlcAc/li685jcGlReHhuUitXDiWDOADWvmKLtEvP/oKB6A/Y5caAq\nkn3Ce7sqRxjp/0L/9eDiNyZ72UucAYvekZJPpw4kw3W3ac8TnQgwVCUxHlsK6DRb\n9ifP+PB+BIdzOoU0lXmxAn3Bda/wkJFYpLKz/Qcze8DyDisJ7mjrt1xJEhRCstyj\nIa86wrfP/jyYBWfAlKjJ8WNNrj652TCU440WUpooT+7ZO1I+0zDU+vKGa8X6kOlm\njrg1tk7XAgMBAAECggEAJS2eiecTJXz2KmIm5v5ZExMd8XJP5dy5gnKIVNY/xBJ/\nTHxOricB4mrXQb9I4yOwv47A+tRCw7Qilmtjnb7Quw8MaMelq6yFZZFx0mhxOIdw\nTsEMY22OMAHiKPLZ8gr6m7PGywB83FYBK8TZlas/JvzIC7hbcfFCz2IaabU8qpVe\nJx2IgdhqoXD/OKhrZfG80C6r4oCuJzkln2C9EWJGunxfaw+V95W/P6YIHFMBaknA\n8UEWUwMLy70seJqK9gS3XHDXdwgBglOZLp52al7yRXD3qaVgfuXg5ITz6bz1qguJ\n2pqxlZUtQ26Y4Jkyhx3L180NvVNQ6a83Yo1direZwQKBgQDWW8D/hXpf8fGEQv6n\nlXxQO0w+Ol/ICwW5xrTI192L0jK+rYn3eqpoKKZhYwx8ORbPd1StXiamOJ1Bp78r\niaVEnL27NJmd47rAY87pdO/h7FXNmltJh+ZllalXsqjpv/VOPY2WcUZgRJ8c/JZz\nRiCF2uQm67cqQTkKEiVJ9aTwIQKBgQDD6V8v4q9RYywbuOs/g0dmPqK6bJMGnhFP\ngJVr0yXjRUQcB6IGBxHRIjv0EN24EEmhs3/6O9/PXDvBW6ohSlgLR5yt7DM8KSQA\nJk2rk9n1wE28+KX2Ouo2If9E77f4xAaHhkJCi6Egfaz89vYicX8ZiGesLWWCmDJv\nffia3yq/9wKBgQCrpfeK5ViUAcpzLa57hZFxMbqgzd+q8WCZXcugVHM8poop9A7Z\nlGlmVL6+lzEFPDXO1fCBjzYFvqn2TBwiAevMYHLxuHIWY6hErOegPBpm3/fpVuQo\nomFVER30csUdwK/vAg0h3f0L04dSD9Vt40bhyOEPZYtbk7TYIqWnbsOv4QKBgQDC\nODrokxdxXRreRN3bcj83asMShA7iEZRht7zqT0KRZBrYmuySgzGznffHx2y3TFZi\n2zv1jKQdw3duAnzQUg6k6BK5DZ/hdXu+Njrr7UC4dDPdMrf9Onz0u5GA+xHsqhE7\nC+vmYtyTBGSZyA9NKC1z15nHxJ2M8WuWwlDS4IlWEwKBgGpixJwMswHqjHmk5zqK\n75m8xyGUAbCsYgzQ7qzjAzug5zyGbrYymE6QsVH8H8krmTA2iY/jgnq4CvasQxB/\n5KuYgAOs78L55Kyn8u9GJ/iEJiX7IT3IrT7aDvDownehlPZma2kJgY9CZeKB8thx\nBSGYGVwtwyi8Se7KBZ5KuVBZ\n-----END PRIVATE KEY-----\n",
+  "client_email": "efhmeries@efhmeries.iam.gserviceaccount.com",
+  "client_id": "111010436983476497507",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/efhmeries%40efhmeries.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com" }}
           parent_folder_id: '<1NTyoZ7m72E-7Pw3DWmXbDyj9qnjdXiS5>'  # Change to your Google Drive folder ID
