@@ -172,7 +172,8 @@ def upload_to_drive(file_name, folder_id):
     refresh_token = os.environ['REFRESH_TOKEN']
 
     credentials = Credentials(None, refresh_token=refresh_token, token_uri='https://oauth2.googleapis.com/token', client_id=client_id, client_secret=client_secret)
-    
+    if credentials.expired:
+        credentials.refresh(Request())
     service = build('drive', 'v3', credentials=credentials)
     
     file_metadata = {
