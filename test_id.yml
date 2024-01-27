@@ -1,0 +1,17 @@
+name: Check Secrets
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-secrets:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Display Client ID
+      run: echo "Client ID: ${{ secrets.62038061756-ot0st3dqt1ekbec5mpbacra9t60k075r.apps.googleusercontent.com}}"
