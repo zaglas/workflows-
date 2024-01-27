@@ -17,7 +17,7 @@ jobs:
       run: |
         CLIENT_ID=${{ secrets.CLIENT_ID }}
         echo "Client ID: $CLIENT_ID"
-        if [ "$CLIENT_ID" == "62038061756-ot0st3dqt1ekbec5mpbacra9t60k075r.apps.googleusercontent.com" ]; then
+        if [ "$CLIENT_ID" == "864022074766-h2nrrpd2716ccb18cdk4aq1va24jf5fp.apps.googleusercontent.com" ]; then
           echo "Client ID is correct."
         else
           echo "Error: Client ID does not match the expected value."
