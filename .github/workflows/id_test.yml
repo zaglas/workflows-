@@ -14,4 +14,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Display Client ID
-      run: echo "Client ID: ${{ secrets.62038061756-ot0st3dqt1ekbec5mpbacra9t60k075r.apps.googleusercontent.com}}"
+      run: echo "Client ID: ${{ secrets.CLIENT_ID }}"
