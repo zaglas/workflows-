@@ -13,13 +13,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Display Client ID
+    - name: Display Refresh Token
       run: |
-        CLIENT_ID=${{ secrets.CLIENT_ID }}
-        echo "Client ID: $CLIENT_ID"
-        if [ "$CLIENT_ID" == "864022074766-h2nrrpd2716ccb18cdk4aq1va24jf5fp.apps.googleusercontent.com" ]; then
-          echo "Client ID is correct."
+        REFRESH_TOKEN=${{ secrets.REFRESH_TOKEN }}
+        echo "Refresh Token: $REFRESH_TOKEN"
+        if [ "$REFRESH_TOKEN" == "1//04MoJ89JCpVwjCgYIARAAGAQSNwF-L9IrUAUgS5LhTZ2ZsoHnteuzqBMi3_8L3SQ9dDbAkCjNuGm-USsghLVw9vSnngC23-5Nd8o" ]; then
+          echo "Refresh Token is correct."
         else
-          echo "Error: Client ID does not match the expected value."
+          echo "Error: Refresh Token does not match the expected value."
           exit 1
         fi
