@@ -164,18 +164,34 @@ with open('pharmacy_data.json', 'w') as file:
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
+from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
 
-def upload_to_drive(file_name, folder_id):
+def fetch_credentials():
     # Add your client_id, client_secret, and refresh_token
     client_id = os.environ['CLIENT_ID']
     client_secret = os.environ['CLIENT_SECRET']
     refresh_token = os.environ['REFRESH_TOKEN']
 
-    credentials = Credentials(None, refresh_token=refresh_token, token_uri='https://oauth2.googleapis.com/token', client_id=client_id, client_secret=client_secret)
+    credentials = Credentials.from_authorized_user_info(
+        {
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "refresh_token": refresh_token,
+        },
+        scopes=["https://www.googleapis.com/auth/drive"],
+    )
+
     if credentials.expired:
         credentials.refresh(Request())
+
+    return credentials
+
+def upload_to_drive(file_name, folder_id, credentials):
     service = build('drive', 'v3', credentials=credentials)
-    
+
     file_metadata = {
         'name': os.path.basename(file_name),
         'parents': [folder_id]
@@ -186,6 +202,8 @@ def upload_to_drive(file_name, folder_id):
     print(f"Uploaded file ID: {file.get('id')}")
 
 def main():
+    credentials = fetch_credentials()
+    
     pharmacy_data = fetch_pharmacy_data()
     print(pharmacy_data)
 
@@ -195,7 +213,7 @@ def main():
 
     # Folder ID in Google Drive where you want to upload the file
     folder_id = '1NTyoZ7m72E-7Pw3DWmXbDyj9qnjdXiS5'
-    upload_to_drive(json_file_name, folder_id)
+    upload_to_drive(json_file_name, folder_id, credentials)
 
 if __name__ == '__main__':
     main()
